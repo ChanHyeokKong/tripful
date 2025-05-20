@@ -6,7 +6,7 @@ public class Git_print {
 	
 	public String gitPrint() {
 		
-		s = "1234";
+		s = "0329";
 		
 		return s;
 	}
