@@ -1,0 +1,15 @@
+package git_test;
+
+public class Git_print {
+	
+	String s;
+	
+	public void gitPrint() {
+		
+		s = "1234";
+		
+		System.out.println(s);
+	}
+	
+	
+}

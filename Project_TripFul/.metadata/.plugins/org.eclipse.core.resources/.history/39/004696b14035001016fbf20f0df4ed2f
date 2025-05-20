@@ -1,0 +1,50 @@
+<%@page import="git_test.Git_sum"%>
+<%@page import="git_test.Git_print"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Dongle&family=Nanum+Brush+Script&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<title>Insert title here</title>
+
+<%
+	Git_print gp = new Git_print();
+	Git_sum gs = new Git_sum();
+%>
+
+<script>
+	$(function(){
+		$("#print").click(function(){
+			$(this).append("<%=gp.gitPrint()%>");
+		})
+		
+		$("#sum").click(function(){
+			$(this).append("<h5><%=gs.gitSum()%></h5>");
+		})
+	})
+	
+
+</script>
+
+</head>
+<body>
+	<div>
+	<h3>테스트용</h3>
+	<button id="print">출력</button><br>
+	
+	<button id="sum">더하기</button>
+	
+	</div>
+</body>
+</html>
