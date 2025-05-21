@@ -106,7 +106,7 @@
         authButton.addEventListener('click', () => {
             loggedIn = !loggedIn;
             if (loggedIn) {
-                welcomeText.textContent = 'parkib002 님 환영합니다';
+                welcomeText.textContent = 'taelim34 님 환영합니다';
                 authButton.textContent = 'Logout';
             } else {
                 welcomeText.textContent = '로그인을 해주세요';
