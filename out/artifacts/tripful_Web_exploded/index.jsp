@@ -14,7 +14,7 @@
 <%@ include file="layout/header.jsp" %>
 
 <%
-    String mainPage = "mainpage/TripFul_main.jsp";
+    String mainPage = "page/TripFul_main.jsp";
     if (request.getParameter("main") != null) {
         mainPage = request.getParameter("main");
     }
