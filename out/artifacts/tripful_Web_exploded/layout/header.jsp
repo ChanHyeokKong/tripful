@@ -11,7 +11,7 @@
         <!-- 중앙 로고 -->
         <div class="position-absolute top-50 start-50 translate-middle">
             <a class="navbar-brand" href="index.jsp">
-                <img src="../image/tripful_logo.png" alt="Tripful Logo" height="100">
+                <img src="../image/tripful_logo.png" alt="Tripful Logo" height="120">
             </a>
         </div>
 
@@ -38,7 +38,22 @@
 
 
 <header class="hero">
-    <h2>Welcome To Our Studio!</h2>
-    <h1>IT'S NICE TO MEET YOU</h1>
-    <a href="#recommended" class="btn btn-yellow btn-lg mt-4">Tell Me More</a>
+    <h1>Welcome To Our Tripful</h1>
+    <h2>IT'S Travel review site</h2>
 </header>
+
+
+<script>
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('mainMenu');
+        const toggleButton = document.querySelector('.navbar-toggler');
+
+        // 메뉴가 열려 있고, 클릭한 곳이 메뉴 안도 아니고 버튼도 아니면
+        if (menu.classList.contains('show') &&
+            !menu.contains(event.target) &&
+            !toggleButton.contains(event.target)) {
+            const bsCollapse = bootstrap.Collapse.getInstance(menu);
+            bsCollapse.hide();
+        }
+    });
+</script>
