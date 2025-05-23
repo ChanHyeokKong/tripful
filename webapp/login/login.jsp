@@ -60,7 +60,7 @@
 						</div>
 						<div class="group">
 							<label for="user" class="label">아이디</label> <input name="id"
-								type="text" class="input" required="required">
+								type="text" class="input" required="required" id="id">
 						</div>
 						
 						<div class="group">

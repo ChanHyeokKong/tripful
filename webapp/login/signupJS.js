@@ -4,14 +4,52 @@
 
 function chkSignUp() {
 	if ($(".sign-up-htm").children().find("label").hasClass("error")) {
-		console.log("에러 클래스 있음");
+		//console.log("에러 클래스 있음");
 		return false;
 	}
 	else {
-		console.log("에러 클래스 못찾음");
+		//console.log("에러 클래스 못찾음");
 		return true;
 	}
 }
+
+$("#id").keyup(function() {
+	//ajax를 통한 비동기 방식으로 중복 처리
+	var inputId = $("#id");
+	$.ajax({
+		type: "get",
+		url: "./checkDuplication.jsp",
+		data: { "id": inputId.val() },
+		dataType: "html",
+		success: function(res) {
+			if (res.trim() == 1) {
+				inputId.siblings(".label").text("아이디      중복된 아이디입니다.");
+				inputId.siblings(".label").addClass("error");
+				console.log(res.trim());
+			}
+			else if (res.trim() == 2) {
+				inputId.siblings(".label").text("아이디      6글자 이상 16글자 이하의 아이디를 입력하세요.");
+				inputId.siblings(".label").addClass("error");
+				console.log(res.trim());
+			}
+			else if (res.trim() == 3) {
+				inputId.siblings(".label").text("아이디      사용불가능한 문자가 포함 되었습니다.");
+				inputId.siblings(".label").addClass("error");
+				//console.log(res.trim());
+			}
+			else if (res.trim() == 4) {
+				inputId.siblings(".label").text("아이디      영문과 숫자가 모두 포함되어야 합니다.");
+				inputId.siblings(".label").addClass("error");
+				//console.log(res.trim());
+			}
+			else {
+				inputId.siblings(".label").text("아이디      사용가능한 아이디입니다.");
+				inputId.siblings(".label").removeClass("error");
+				//console.log(res.trim());
+			}
+		}
+	})
+})
 
 $("#pw").keyup(function() {
 	if ($(this).val() == "") {
@@ -35,12 +73,31 @@ $("#pw").keyup(function() {
 	}
 })
 $("#birth").keyup(function() {
-	// 추후 error 클래스 추가하는 방안으로 수정
-	if ($(this).val().endsWith(0) || $(this).val().endsWith(1) || $(this).val().endsWith(2) || $(this).val().endsWith(3) || $(this).val().endsWith(4) || $(this).val().endsWith(5) ||
-		$(this).val().endsWith(6) || $(this).val().endsWith(7) || $(this).val().endsWith(8) || $(this).val().endsWith(9)) {
+	if (isNaN($(this).val())) {
+		$(this).siblings(".label").text("생년월일      숫자로만 입력해주세요.");
+		$(this).siblings(".label").addClass("error");
+	}
+	else if ($(this).val().length != 6 && $(this).val() == "") {
+		$(this).siblings(".label").text("생년월일     6자리 YYMMDD형태로 입력해주세요.");
+		$(this).siblings(".label").addClass("error");
 	}
 	else {
-		$(this).val(($(this).val().slice(0, -1)));
-		console.log(($(this).val().slice(0, -1)));
+		var year = $(this).val().substring(0, 2);
+		var month = $(this).val().substring(2, 4);
+		var day = $(this).val().substring(4, 6);
+
+		if (Number(month) > 12 || Number(month) <= 0) {
+			$(this).siblings(".label").text("생년월일     6자리 YYMMDD형태로 입력해주세요.");
+			$(this).siblings(".label").addClass("error");
+		}
+		else if (Number(day) > 31 || Number(day) <= 0) {
+			$(this).siblings(".label").text("생년월일     6자리 YYMMDD형태로 입력해주세요.");
+			$(this).siblings(".label").addClass("error");
+		}
+		else {
+			$(this).siblings(".label").text("생년월일");
+			$(this).siblings(".label").removeClass("error");
+		}
 	}
+
 })
