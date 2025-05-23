@@ -14,8 +14,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
-<title>Insert title here</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<title>Insert title here</title>
     <style>
         .menu {
             display: none;
@@ -49,34 +49,36 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
     <header class="flex justify-between items-center p-4 bg-white shadow">
-        <div class="cursor-pointer" onclick="location.reload()">
-            <img src="../image/tripful.png" alt="Logo" class="h-12">
+        <div class="cursor-pointer">
+            <img src="../image/tripful.png" alt="Logo" class="h-12"
+            onclick="location.href='TripFul_main.jsp'">
         </div>
         <nav class="relative">
             <ul class="flex space-x-4">
                 <li class="menu-item relative">
-                    <button class="px-4 py-2 bg-gray-200 rounded">Menu 1</button>
+                    <button class="px-4 py-2 bg-gray-200 rounded"
+                    onclick="location.href='selectContinent.jsp'">관광지</button>
                     <ul class="menu p-2">
                         <li class="p-2 hover:bg-gray-100">Submenu 1-1</li>
                         <li class="p-2 hover:bg-gray-100">Submenu 1-2</li>
                     </ul>
                 </li>
                 <li class="menu-item relative">
-                    <button class="px-4 py-2 bg-gray-200 rounded">Menu 2</button>
+                    <button class="px-4 py-2 bg-gray-200 rounded">공지사항</button>
                     <ul class="menu p-2">
                         <li class="p-2 hover:bg-gray-100">Submenu 2-1</li>
                         <li class="p-2 hover:bg-gray-100">Submenu 2-2</li>
                     </ul>
                 </li>
                 <li class="menu-item relative">
-                    <button class="px-4 py-2 bg-gray-200 rounded">Menu 3</button>
+                    <button class="px-4 py-2 bg-gray-200 rounded">고객센터</button>
                     <ul class="menu p-2">
                         <li class="p-2 hover:bg-gray-100">Submenu 3-1</li>
                         <li class="p-2 hover:bg-gray-100">Submenu 3-2</li>
                     </ul>
                 </li>
                 <li class="menu-item relative">
-                    <button class="px-4 py-2 bg-gray-200 rounded">Menu 4</button>
+                    <button class="px-4 py-2 bg-gray-200 rounded">기타</button>
                     <ul class="menu p-2">
                         <li class="p-2 hover:bg-gray-100">Submenu 4-1</li>
                         <li class="p-2 hover:bg-gray-100">Submenu 4-2</li>
