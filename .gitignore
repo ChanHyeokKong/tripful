@@ -1,8 +1,20 @@
-/build/
-/tomcat.8080/
-/target/
-/.project
+# Eclipse 설정 파일
 /.settings/
-/.classpath
-/bin/
 /.metadata/
+/.recommenders/
+
+# 빌드 파일
+/build/
+/target/
+/bin/
+/out/
+
+# OS별 파일
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Java IDE 파일
+.classpath
+.project
