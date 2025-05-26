@@ -2,6 +2,7 @@
 /.settings/
 /.metadata/
 /.recommenders/
+/Servers/
 
 # 빌드 파일
 /build/
