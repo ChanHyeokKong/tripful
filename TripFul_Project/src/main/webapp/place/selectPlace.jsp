@@ -145,6 +145,8 @@
     }
 
     $(document).ready(showContinents);
+    
+    //test
   </script>
 </body>
 </html>
