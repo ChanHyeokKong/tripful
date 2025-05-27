@@ -3,6 +3,8 @@
 /.metadata/
 /.recommenders/
 /Servers/
+/.idea/
+/out/
 
 # 빌드 파일
 /build/
