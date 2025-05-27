@@ -67,11 +67,22 @@
       padding: 0.75rem;
       text-align: center;
     }
+    
+    .place-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s ease; /* 부드러운 애니메이션 */
+}
+
+.place-card:hover img {
+  transform: scale(0.95); /* 95% 크기로 축소 */
+}
   </style>
 </head>
 <body>
   <header>
-    <h1>관광지 선택 페이지</h1>
+    <h1>관광지 선택</h1>
   </header>
 
   <div class="container">
@@ -82,15 +93,15 @@
   <script>
     const data = {
       asia: {
-        Japan: ['도쿄 타워', '오사카성'],
-        Korea: ['경복궁', '부산 해운대']
+        Japan: ['도쿄 도쿄타워', '오사카 오사카성'],
+        Korea: ['서울 경복궁', '부산 해운대','제주도 성산일출봉','전주 한옥마을']
       },
       europe: {
-        France: ['에펠탑', '루브르 박물관'],
-        Italy: ['콜로세움', '베네치아 운하']
+        France: ['파리 에펠탑', '파리 루브르 박물관'],
+        Italy: ['로마 콜로세움', '베네치아 베네치아 운하']
       },
       america: {
-        USA: ['자유의 여신상', '그랜드 캐니언'],
+        USA: ['뉴욕 자유의 여신상', '그랜드 캐니언'],
         Brazil: ['리우 해변', '아마존 정글']
       },
       africa: {
@@ -129,20 +140,39 @@
       $('#placeContainer').empty();
     }
 
-    function showPlaces(continent, country) {
-      const places = data[continent][country];
-      const $container = $('#placeContainer');
-      $container.empty();
-      $.each(places, function(_, place) {
-        const $card = $('<div class="place-card">');
-        $('<img>')
-          .attr('src', 'https://via.placeholder.com/200x150?text=' + encodeURIComponent(place))
-          .attr('alt', place)
-          .appendTo($card);
-        $('<div class="caption">').text(place).appendTo($card);
-        $card.appendTo($container);
-      });
-    }
+    const imageMap = {
+    		  '서울 경복궁': '경복궁.jpg',
+    		  '부산 해운대': '해운대.jpg',
+    		  '제주도 성산일출봉': '성산일출봉.jpg',
+    		  '전주 한옥마을': '한옥마을.jpg',
+    		  // 다른 관광지도 필요시 추가
+    		  '도쿄 도쿄타워': '도쿄타워.jpg',
+    		  '오사카 오사카성': '오사카성.jpg'
+    		  
+    		};
+
+    		function showPlaces(continent, country) {
+    		  const places = data[continent][country];
+    		  const $container = $('#placeContainer');
+    		  $container.empty();
+    		  $.each(places, function(_, place) {
+    		    const $card = $('<div class="place-card">');
+
+    		    const fileName = imageMap[place]; // 정확한 파일명 사용
+    		    const imgPath = fileName ? '../image/places/' + fileName : null;
+
+    		    $('<img>')
+    		      .attr('src', imgPath)
+    		      .attr('alt', place)
+    		      .on('error', function() {
+    		        $(this).attr('src', 'https://via.placeholder.com/200x150?text=' + encodeURIComponent(place));
+    		      })
+    		      .appendTo($card);
+
+    		    $('<div class="caption">').text(place).appendTo($card);
+    		    $card.appendTo($container);
+    		  });
+    		}
 
     $(document).ready(showContinents);
     
